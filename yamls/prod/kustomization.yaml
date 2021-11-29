@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+#- ingress.yaml
+resources:
+- namespace.yaml
+- deployment.yaml
+- service.yaml
+#- secret.yaml
+namespace: prod
+images:
+- name: registry.gitlab.montran.in:5050/netadmin/spring_boot_app
+  newTag: 5ce5bf5290167a06a7bc8250088a7d2f932dd17f

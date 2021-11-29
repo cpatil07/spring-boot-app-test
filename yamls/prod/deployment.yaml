@@ -1,0 +1,48 @@
+#apiVersion: apps/v1 
+#kind: Deployment metadata:
+#  labels:
+#    app: gitops-webapp
+#  name: gitops-webapp spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: gitops-webapp
+#  template:
+#    metadata:
+#      labels:
+#        app: gitops-webapp
+#    spec:
+#      containers:
+#      - image: 10.2.0.41:5050/netadmin/spring_boot_app
+#        name: gitops-webapp
+#        imagePullPolicy: Always
+#        ports:
+#        - containerPort: 5000
+#          name: http
+#        env:
+#        - name: APP_PORT
+#          value: "5000"
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+      app: private-reg
+  name: private-reg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: private-reg
+  template:
+    metadata:
+      labels:
+        app: private-reg
+    spec:
+      containers:
+      - name: private-reg-container
+        image: 10.2.0.63/cpatil/spring-boot-application:latest
+        imagePullPolicy: Always
+#      imagePullSecrets:
+#      - name: regcred-prod
